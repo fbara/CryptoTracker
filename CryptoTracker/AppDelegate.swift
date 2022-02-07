@@ -11,6 +11,7 @@ import SwiftUI
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     var statusItem: NSStatusItem!
+    var coinCapService = CoinCapPriceService()
     
     let popover = NSPopover()
     
@@ -20,8 +21,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }()
     
     func applicationDidFinishLaunching(_ notification: Notification) {
+        setupCoinCapService()
         setupMenuBar()
         setupPopover()
+    }
+    
+    func setupCoinCapService() {
+        coinCapService.connect()
     }
     
 }
